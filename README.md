@@ -12,3 +12,7 @@ Untuk mencari IP address dari attacker saya membuka menu statistics dan memilih 
 
 Dari screenshot tersebut IP attacker nya bisa terlihat yaitu Adress A yang paling banyak mengirimkan jumlah packets ke B yaitu 2,197 sehingga 192.168.174.137 merupakan IP dari attacker nya dan 192.168.174.1 merupakan IP dari Internal Server nya.
 
+## 3. Finding who was the first person that successfully login 
+
+Untuk mencari siapa orang yang pertama kali berhasil login kita bisa menggunakan filter (http.request.method == "POST") untuk melihat pengiriman form login.
+
