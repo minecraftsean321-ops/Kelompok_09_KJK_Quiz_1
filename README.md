@@ -2,7 +2,7 @@
 | Nama    | NRP                     |
 | --------| ------------------------|
 | Sean Arthur Tamajaya | 5027251050 |
-| Mahrinza Redouane    |            |
+| Mahrinza Redouane Z. | 5027251074 |
 
 ## 1. Finding the IP address of the Attacker and Internal Server
 
