@@ -26,4 +26,19 @@ Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter s
 
 <img width="1920" height="812" alt="image" src="https://github.com/user-attachments/assets/d5ce401e-310f-45a5-bc22-76cad279ff3b" />
 
+## 5. What password wa used to login as mizu
+
+Dari soal no 3, kita bisa melihat bahwa password yang digunakan untuk mizu adalah: batam.
+
+## 7. Finding the second person to succesfully login and gain administrative accsess
+
+Di soal no 7 ini, saya menggunakan cara yang sama dengan soal no 3, jadi saya menekan Ctrl + F dan menggunakan pengaturan display string dan packet bytes, setelah itu saya memfilter dengan kata "Login Berhasil!" dan menekan find dua kali karena yang pertama pasti upaya login dari mizu, ini hasil yang saya temukan:  
+
+<img width="1282" height="1021" alt="image" src="https://github.com/user-attachments/assets/2975231f-3c2e-4387-afb1-549a92b8126a" />
+
+## 9 What password was used to gaining admin accsess
+
+Dari soal no 7, kita bisa melihat bahwa password yang digunakan untuk mengakses admin adalah: kantor123.
+
+
 
