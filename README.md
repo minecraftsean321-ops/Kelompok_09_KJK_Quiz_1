@@ -6,6 +6,8 @@
 
 ## 1. Finding the IP address of the Attacker and Internal Server
 
+Dalam tahap pengintaian, seorang penyerang umumnya melakukan port scanning (seperti TCP SYN Scan) untuk memetakan titik masuk ke target. Nah, karena hal tersebut IP dari penyerang akan terlihat agresif mengirimkan banyak packet sedangkang IP penerima hanya membalas packet tersebut sesekali. Sehingga untuk mencari IP address dari penyerang kita perlu mencari IP dengan pengiriman packet terbanyak.
+
 Untuk mencari IP address dari attacker saya membuka menu statistics dan memilih conversations, setelah itu saya membuka tab IPv4. Dari situ kita bisa melihat berapa IP address yang paling banyak mengirim kan packet dengan melihat jumlah bytes nya.  
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/c5729197-0e9f-42e5-9679-5a6cde0f8cd5" />
@@ -14,7 +16,9 @@ Dari screenshot tersebut IP attacker nya bisa terlihat yaitu Adress A yang palin
 
 ## 3. Finding who was the first person that successfully login 
 
-Di soal 3 ini saya berusaha mencari packet dengan port yang unik, dengan membuka menu statistic dan memilih conversations. Disitu saya melihat di tab TCP dan saya memilih packet dengan jumlah pengiriman terbesar, setelah itu saya melakukan filter dengan menggunakan packet temuan saya tersebut. Filter yang saya dapat adalah sebagai berikut:
+Ketika sebuah layanan (seperti Telnet, Http, atau custom listener di port non-standar) tidak dibungkus dengan enkripsi seperti TLS/SSL, semua pertukaran data dikirim dalam bentuk teks mentah. Sehingga ketika lalu lintas ini terekam di file PCAP, analisis atau penyerang dapat merekonstruksi urutan paketnya menjadi sebuah TCP Stream. Hasilnya, muatan data termasuk username dan password dapat dibaca secara telanjang bulat.
+
+Untuk memulai saya mencoba mencari packet dengan port yang unik, dengan membuka menu statistic dan memilih conversations. Disitu saya melihat di tab TCP dan saya memilih packet dengan jumlah pengiriman terbesar, setelah itu saya melakukan filter dengan menggunakan packet temuan saya tersebut. Filter yang saya dapat adalah sebagai berikut:
 
 `ip.addr==192.168.174.137 && tcp.port==64030 && ip.addr==192.168.174.1 && tcp.port==2323`
 
@@ -22,7 +26,7 @@ Nah dari situ saya dapat port dengan port unik yaitu 2323, lalu saya memfollow s
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/42aaff7b-9a98-4d46-9fe8-961b04b53018" />
 
-Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter string "Login Berhasil!" dan melihat waktu dari packet yang keluar, dan disini yang saya temukan adalah port 2323 tersebut.
+Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter string "Login Berhasil!" dan melihat waktu dari packet yang keluar, dan disini yang saya temukan adalah port 2323 tersebut yang pertama kali muncul.
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/d5ce401e-310f-45a5-bc22-76cad279ff3b" />
 
@@ -31,6 +35,8 @@ Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter s
 Dari soal no 3, kita bisa melihat bahwa password yang digunakan untuk mizu adalah: batam.
 
 ## 7. Finding the second person to succesfully login and gain administrative accsess
+
+Kredensial kedua ini berhubungan dengan eksploitasi pasca-akses. Setelah memanipulasi alur jaringan internal, attacker menempatkan dirinya di tengah-tengah komunikasi. Ketika administrator berusaha login di ke layanan cleartext yang telah dimanipulasi tersebut attacker bisa melihat password dengan akses hak tinggi. 
 
 Di soal no 7 ini, saya menggunakan cara yang sama dengan soal no 3, jadi saya menekan Ctrl + F dan menggunakan pengaturan display string dan Packet Bytes, setelah itu saya memfilter dengan kata "Login Berhasil!" dan menekan find dua kali karena yang pertama pasti upaya login dari mizu, ini hasil yang saya temukan:  
 
