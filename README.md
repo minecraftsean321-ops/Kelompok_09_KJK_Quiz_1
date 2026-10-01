@@ -14,6 +14,12 @@ Untuk mencari IP address dari attacker saya membuka menu statistics dan memilih 
 
 Dari screenshot tersebut IP attacker nya bisa terlihat yaitu Adress A yang paling banyak mengirimkan jumlah packets ke B yaitu 2,197 sehingga 192.168.174.137 merupakan IP dari attacker nya dan 192.168.174.1 merupakan IP dari Internal Server nya.
 
+## 2. Finding the open non standard TCP Port
+
+Gunakan filter `tcp.flags.syn == 1 && tcp.flags.ack == 1` untuk mencari paket TCPnya. Ditemukan bahwa server 192.168.174.1 mengirim paket dari port non standard ==2323== ke host 192.168.174.137.
+
+<img width="1349" height="234" alt="2_2" src="https://github.com/user-attachments/assets/a2076e9a-fe21-4491-b358-5303b3c7f92a" />
+
 ## 3. Finding who was the first person that successfully login 
 
 Ketika sebuah layanan (seperti Telnet, Http, atau custom listener di port non-standar) tidak dibungkus dengan enkripsi seperti TLS/SSL, semua pertukaran data dikirim dalam bentuk teks mentah. Sehingga ketika lalu lintas ini terekam di file PCAP, analisis atau penyerang dapat merekonstruksi urutan paketnya menjadi sebuah TCP Stream. Hasilnya, muatan data termasuk username dan password dapat dibaca secara telanjang bulat.
