@@ -38,10 +38,9 @@ Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter s
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/d5ce401e-310f-45a5-bc22-76cad279ff3b" />
 
-## 4
+## 4 Finding the date of an user login packet
 
-Untuk mencari paket login user Mizu adalah dengan cara memasang filter `tcp contains "Mizu"`. Untuk memastikan bahwa itu adalah paket login Mizu, bisa dengan cara Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Mizu, passwordnya, dan respons server login berhasil.
-
+Untuk mencari paket login user Mizu adalah dengan cara memasang filter `tcp contains "Mizu"`. Untuk memastikan bahwa itu adalah paket login Mizu, bisa dengan cara Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Mizu, passwordnya, dan respons server login berhasil. Untuk mencari tanggal user login, cukup lihat pada tabel di kolom kedua, yaitu kolom time.
 <img width="1266" height="247" alt="4_1" src="https://github.com/user-attachments/assets/fbdc755e-8001-4172-b508-845a94c004c3" />
 
 source: https://www.reddit.com/r/wireshark/comments/ycjdmo/contains_keyword_doesnt_work/
@@ -49,6 +48,14 @@ source: https://www.reddit.com/r/wireshark/comments/ycjdmo/contains_keyword_does
 ## 5. What password wa used to login as mizu
 
 Dari soal no 3, kita bisa melihat bahwa password yang digunakan untuk mizu adalah: batam.
+
+## 6. Finding the attack that was performed by the attacker after the succussful login
+
+Bisa dengan cara memasukkan filter `arp.opcode == 2`. ditemukan banyak sekali Gratuitous ARP Reply yang mengklaim alamat IP 192.168.174.1, serta muncul peringatan "duplicate use of 192.168.174.1 detected". Ini adalah tanda dari serangan ARP Spoofing/ARP Poisoning.
+
+<img width="1471" height="536" alt="6_1" src="https://github.com/user-attachments/assets/fb68be87-9a18-431f-9871-c0f3b7d576e0" />
+
+source: https://oneuptime.com/blog/post/2026-03-20-wireshark-detect-arp-spoofing/view
 
 ## 7. Finding the second person to succesfully login and gain administrative accsess
 
