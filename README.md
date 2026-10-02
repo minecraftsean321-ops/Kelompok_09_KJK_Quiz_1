@@ -40,8 +40,9 @@ Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter s
 
 ## 4 Finding the date of an user login packet
 
-Untuk mencari paket login user Mizu adalah dengan cara memasang filter `tcp contains "Mizu"`. Untuk memastikan bahwa itu adalah paket login Mizu, bisa dengan cara Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Mizu, passwordnya, dan respons server login berhasil. Untuk mencari tanggal user login, cukup lihat pada tabel di kolom kedua, yaitu kolom time.
-<img width="1266" height="247" alt="4_1" src="https://github.com/user-attachments/assets/fbdc755e-8001-4172-b508-845a94c004c3" />
+Untuk mencari paket login user Mizu adalah dengan cara memasang filter `frame contains "Mizu"`. Untuk memastikan bahwa itu adalah paket login Mizu, bisa dengan cara Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Mizu, passwordnya, dan respons server login berhasil. Untuk mencari tanggal user login, cukup lihat pada tabel di kolom kedua, yaitu kolom time.
+
+<img width="1304" height="362" alt="4_1" src="https://github.com/user-attachments/assets/74346f72-ba1a-447b-ac73-5885f30c0560" />
 
 source: https://www.reddit.com/r/wireshark/comments/ycjdmo/contains_keyword_doesnt_work/
 
@@ -65,15 +66,22 @@ Di soal no 7 ini, saya menggunakan cara yang sama dengan soal no 3, jadi saya me
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/2975231f-3c2e-4387-afb1-549a92b8126a" />
 
-## 8. Finding at what time did admin successfully gained access
+## 8. Finding at what time did admin successfully gain access
 
 Untuk mencari paket user admin: caranya adalah menggunakan filter yang sama persis digunakan pada nomor 4, untuk nomor 8 ini masukkan "admin" kedalam filternya `frame contains "admin"`. Setelah paket terkait login ditemukan, saya Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Admin, passwordnya, dan respons server `login berhasil`. saya periksa waktu pada paket saat akses berhasil diperoleh, kemudian mencapture dalam format HH:MM:SS.
 
-<img width="1349" height="421" alt="8_1" src="https://github.com/user-attachments/assets/20f0132d-739c-426d-af8c-4f37abec5a99" />
+<img width="1280" height="418" alt="8_1" src="https://github.com/user-attachments/assets/7481aeec-b909-435a-a031-8daeced5eb1e" />
 
-## 9 What password was used to gaining admin accsess
+## 9. What password was used to gaining admin accsess
 
 Dari soal no 7, kita bisa melihat bahwa password yang digunakan untuk mengakses admin adalah: kantor123.
+
+## 10. What is the content of "Administrative Flag" obtained after logging in as admin
+
+Administrative sudah terlihat saat membuka tcp stream login admin(nomor 8), dari situ terlihat `CTF{Waktu_Adalah_Kunci}` sebagai flag administrasinya.
+
+<img width="1280" height="418" alt="10_1" src="https://github.com/user-attachments/assets/576f3e13-6060-47f3-bea8-8b9c4d4076b8" />
+
 
 
 
