@@ -14,6 +14,8 @@ Untuk mencari IP address dari attacker saya membuka menu statistics dan memilih 
 
 Dari screenshot tersebut IP attacker nya bisa terlihat yaitu Adress A yang paling banyak mengirimkan jumlah packets ke B yaitu 2,197 sehingga 192.168.174.137 merupakan IP dari attacker nya dan 192.168.174.1 merupakan IP dari Internal Server nya.
 
+source: https://share.gemini.google/ETjWeLm71pg1
+
 ## 2. Finding the open non standard TCP Port
 
 Gunakan filter `tcp.flags.syn == 1 && tcp.flags.ack == 1` untuk mencari paket TCPnya. Ditemukan bahwa server 192.168.174.1 mengirim paket dari port non standard ==2323== ke host 192.168.174.137.
@@ -36,7 +38,9 @@ Nah dari situ saya dapat port dengan port unik yaitu 2323, lalu saya memfollow s
 
 Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter string "Login Berhasil!" dan melihat waktu dari packet yang keluar, dan disini yang saya temukan adalah port 2323 tersebut yang pertama kali muncul.
 
-<img width="680" alt="image" src="https://github.com/user-attachments/assets/d5ce401e-310f-45a5-bc22-76cad279ff3b" />
+<img width="680" alt="image" src="https://github.com/user-attachments/assets/d5ce401e-310f-45a5-bc22-76cad279ff3b" />  
+
+source: https://share.gemini.google/ETjWeLm71pg1
 
 ## 4 Finding the date of an user login packet
 
@@ -60,11 +64,13 @@ source: https://oneuptime.com/blog/post/2026-03-20-wireshark-detect-arp-spoofing
 
 ## 7. Finding the second person to succesfully login and gain administrative accsess
 
-Kredensial kedua ini berhubungan dengan eksploitasi pasca-akses. Setelah memanipulasi alur jaringan internal, attacker menempatkan dirinya di tengah-tengah komunikasi. Ketika administrator berusaha login di ke layanan cleartext yang telah dimanipulasi tersebut attacker bisa melihat password dengan akses hak tinggi. 
+Kredensial kedua ini berhubungan dengan eksploitasi pasca-akses. Setelah memanipulasi alur jaringan internal, attacker menempatkan dirinya di tengah-tengah komunikasi. Ketika administrator berusaha login ke layanan cleartext yang telah dimanipulasi tersebut attacker bisa melihat password dengan akses hak tinggi. 
 
 Di soal no 7 ini, saya menggunakan cara yang sama dengan soal no 3, jadi saya menekan Ctrl + F dan menggunakan pengaturan display string dan Packet Bytes, setelah itu saya memfilter dengan kata "Login Berhasil!" dan menekan find dua kali karena yang pertama pasti upaya login dari mizu, ini hasil yang saya temukan:  
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/2975231f-3c2e-4387-afb1-549a92b8126a" />
+
+source: https://share.gemini.google/ETjWeLm71pg1
 
 ## 8. Finding at what time did admin successfully gain access
 
