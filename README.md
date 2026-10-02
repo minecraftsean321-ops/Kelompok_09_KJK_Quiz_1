@@ -65,6 +65,12 @@ Di soal no 7 ini, saya menggunakan cara yang sama dengan soal no 3, jadi saya me
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/2975231f-3c2e-4387-afb1-549a92b8126a" />
 
+## 8. Finding at what time did admin successfully gained access
+
+Untuk mencari paket user admin: caranya adalah menggunakan filter yang sama persis digunakan pada nomor 4, untuk nomor 8 ini masukkan "admin" kedalam filternya `frame contains "admin"`. Setelah paket terkait login ditemukan, saya Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Admin, passwordnya, dan respons server `login berhasil`. saya periksa waktu pada paket saat akses berhasil diperoleh, kemudian mencapture dalam format HH:MM:SS.
+
+<img width="1349" height="421" alt="8_1" src="https://github.com/user-attachments/assets/20f0132d-739c-426d-af8c-4f37abec5a99" />
+
 ## 9 What password was used to gaining admin accsess
 
 Dari soal no 7, kita bisa melihat bahwa password yang digunakan untuk mengakses admin adalah: kantor123.
