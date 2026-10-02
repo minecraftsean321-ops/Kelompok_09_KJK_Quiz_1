@@ -20,6 +20,8 @@ Gunakan filter `tcp.flags.syn == 1 && tcp.flags.ack == 1` untuk mencari paket TC
 
 <img width="1349" height="234" alt="2_2" src="https://github.com/user-attachments/assets/a2076e9a-fe21-4491-b358-5303b3c7f92a" />
 
+source: https://classroom.its.ac.id/course/view.php?id=19818 [MyITS Classroom KJK Week-2] 
+
 ## 3. Finding who was the first person that successfully login 
 
 Ketika sebuah layanan (seperti Telnet, Http, atau custom listener di port non-standar) tidak dibungkus dengan enkripsi seperti TLS/SSL, semua pertukaran data dikirim dalam bentuk teks mentah. Sehingga ketika lalu lintas ini terekam di file PCAP, analisis atau penyerang dapat merekonstruksi urutan paketnya menjadi sebuah TCP Stream. Hasilnya, muatan data termasuk username dan password dapat dibaca secara telanjang bulat.
@@ -35,6 +37,14 @@ Nah dari situ saya dapat port dengan port unik yaitu 2323, lalu saya memfollow s
 Untuk membuktikan bahwa itu merupakan login pertama kita bisa melakukan filter string "Login Berhasil!" dan melihat waktu dari packet yang keluar, dan disini yang saya temukan adalah port 2323 tersebut yang pertama kali muncul.
 
 <img width="680" alt="image" src="https://github.com/user-attachments/assets/d5ce401e-310f-45a5-bc22-76cad279ff3b" />
+
+## 4
+
+Untuk mencari paket login user Mizu adalah dengan cara memasang filter `tcp contains "Mizu"`. Untuk memastikan bahwa itu adalah paket login Mizu, bisa dengan cara Follow -> TCP Stream. Dari situ terlihat bahwa terdapat user Mizu, passwordnya, dan respons server login berhasil.
+
+<img width="1266" height="247" alt="4_1" src="https://github.com/user-attachments/assets/fbdc755e-8001-4172-b508-845a94c004c3" />
+
+source: https://www.reddit.com/r/wireshark/comments/ycjdmo/contains_keyword_doesnt_work/
 
 ## 5. What password wa used to login as mizu
 
